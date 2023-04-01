@@ -9,10 +9,9 @@ pipeline {
   }
 
   stages {
-  
-      stage('Hello') {
 
-      steps {
+    stage('Hello') {
+       steps {
 
         sh '''
 
@@ -21,6 +20,25 @@ pipeline {
         '''
 
       }
+
+    }
+
+    stage('cat README') {
+
+        when {
+
+        branch "fix-*"
+
+      }
+
+      steps {
+
+        sh '''
+
+          cat README.md
+
+        '''
+              }
 
     }
 
